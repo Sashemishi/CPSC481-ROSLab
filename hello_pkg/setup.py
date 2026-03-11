@@ -17,11 +17,11 @@ setup(
     maintainer_email='gil@todo.todo',
     description='TODO: Package description',
     license='TODO: License declaration',
-    extras_require=['pytest'],
+    extras_require={'test': ['pytest']},
     entry_points={
         'console_scripts': [
             'hello = hello_pkg.hello:main',
-            'traveler' = 'hello_pkg.traveler:main'
+            'traveler = hello_pkg.traveler:main'
         ],
     },
 )
