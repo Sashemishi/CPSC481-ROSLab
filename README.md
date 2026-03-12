@@ -1,3 +1,20 @@
+# Traveler Project - ROS Basic Navigation
+Group 7
+- Gilbert Banuelos
+- Matthew Choi
+- Owen Keyser
+- Peter Afif
+
+## Overview
+package containts two ROS programs:
+1. hello.py - prints "Hello World"
+2. traveler program - controls turtle1 in turtlesim to navigate the given path
+
+Both prgrams were developed on:
+- ROS2 Humble
+- Ubuntu 22.04
+- Python
+  
 # How to Run the Traveler Program
 
 ## Open Terminal 1 (The Simulator):
