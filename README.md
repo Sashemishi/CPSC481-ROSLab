@@ -15,16 +15,21 @@ Both prgrams were developed on:
 - Ubuntu 22.04
 - Python
   
-# How to Run the Traveler Program
+## How to run the programs
 
-## Open Terminal 1 (The Simulator):
-* ros2 run turtlesim turtlesim_node
+### Running the Hello World program
+1. navigate to ROS directory
+2. build the programs using the command: colcon build
+3. source install/setup.bash
+4. ros2 run hello_pkg hello
+5. Ctr + C to end the program
 
-## Open Terminal 2 (The Controller):
-* cd ~/Documents/ROS/CPSC481-ROSLab
-* colcon build --packages-select hello_pkg
-* source install/setup.bash
-* ros2 run hello_pkg traveler
-
-# Navigation Strategy:
-The robot uses a timed state machine to alternate between linear translation and angular rotation. It monitors its current Euclidean distance from the initial start_pose and terminates when that distance falls below a specific threshold.
+### Running the Traveler Program
+Open Termina1 (Simulator):
+1. navigate to ROS directory
+2. ros2 run turtlesim turtlesim_node
+Open Terminal2 (Controller):
+1. navigate to ROS directory
+2. colcon build
+3. source install/setup.bash
+4. ros2 run traveler_pkg traveler
