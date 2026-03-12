@@ -1,0 +1,22 @@
+[0.206s] Invoking command in '/home/ubuntu/Documents/ROS/CPSC481-ROSLab/hello_pkg': PYTHONPATH=/home/ubuntu/Documents/ROS/CPSC481-ROSLab/build/hello_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ubuntu/Documents/ROS/CPSC481-ROSLab/install/hello_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/hello_pkg build --build-base /home/ubuntu/Documents/ROS/CPSC481-ROSLab/build/hello_pkg/build install --record /home/ubuntu/Documents/ROS/CPSC481-ROSLab/build/hello_pkg/install.log --single-version-externally-managed install_data
+[0.283s] running egg_info
+[0.283s] writing ../build/hello_pkg/hello_pkg.egg-info/PKG-INFO
+[0.283s] writing dependency_links to ../build/hello_pkg/hello_pkg.egg-info/dependency_links.txt
+[0.283s] writing entry points to ../build/hello_pkg/hello_pkg.egg-info/entry_points.txt
+[0.284s] writing requirements to ../build/hello_pkg/hello_pkg.egg-info/requires.txt
+[0.284s] writing top-level names to ../build/hello_pkg/hello_pkg.egg-info/top_level.txt
+[0.284s] reading manifest file '../build/hello_pkg/hello_pkg.egg-info/SOURCES.txt'
+[0.284s] writing manifest file '../build/hello_pkg/hello_pkg.egg-info/SOURCES.txt'
+[0.284s] running build
+[0.284s] running build_py
+[0.285s] running install
+[0.285s] running install_lib
+[0.285s] running install_data
+[0.285s] running install_egg_info
+[0.286s] removing '/home/ubuntu/Documents/ROS/CPSC481-ROSLab/install/hello_pkg/lib/python3.10/site-packages/hello_pkg-0.0.0-py3.10.egg-info' (and everything under it)
+[0.286s] Copying ../build/hello_pkg/hello_pkg.egg-info to /home/ubuntu/Documents/ROS/CPSC481-ROSLab/install/hello_pkg/lib/python3.10/site-packages/hello_pkg-0.0.0-py3.10.egg-info
+[0.286s] running install_scripts
+[0.293s] Installing hello script to /home/ubuntu/Documents/ROS/CPSC481-ROSLab/install/hello_pkg/lib/hello_pkg
+[0.293s] Installing traveler script to /home/ubuntu/Documents/ROS/CPSC481-ROSLab/install/hello_pkg/lib/hello_pkg
+[0.294s] writing list of installed files to '/home/ubuntu/Documents/ROS/CPSC481-ROSLab/build/hello_pkg/install.log'
+[0.302s] Invoked command in '/home/ubuntu/Documents/ROS/CPSC481-ROSLab/hello_pkg' returned '0': PYTHONPATH=/home/ubuntu/Documents/ROS/CPSC481-ROSLab/build/hello_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ubuntu/Documents/ROS/CPSC481-ROSLab/install/hello_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/hello_pkg build --build-base /home/ubuntu/Documents/ROS/CPSC481-ROSLab/build/hello_pkg/build install --record /home/ubuntu/Documents/ROS/CPSC481-ROSLab/build/hello_pkg/install.log --single-version-externally-managed install_data

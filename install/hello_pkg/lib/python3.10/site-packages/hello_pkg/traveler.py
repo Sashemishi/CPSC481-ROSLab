@@ -1,3 +1,14 @@
+#!/usr/bin/env python3
+"""
+traveler.py
+-----------
+ROS 2 node that controls turtle1 in turtlesim to draw a rectangle
+with a diagonal line inside it, using NO hardcoded coordinate points.
+
+Uses proportional control for turning (slows down near target angle)
+and pose odometry for precise distance — no timing, no drift.
+"""
+
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
@@ -8,9 +19,10 @@ import time
 
 class Traveler(Node):
 
+    # Shape dimensions — no coordinates, just relative size
     WIDTH  = 4.0
     HEIGHT = 2.0
-    SPEED  = 1.0
+    SPEED  = 1.0   # linear speed (units/sec)
 
     def __init__(self):
         super().__init__('traveler')
@@ -32,15 +44,20 @@ class Traveler(Node):
 
     @staticmethod
     def _angle_diff(target, current):
+        """Shortest signed angle from current to target."""
         d = target - current
         while d >  math.pi: d -= 2 * math.pi
         while d < -math.pi: d += 2 * math.pi
         return d
 
     def turn_to(self, target_theta):
-        MAX_SPEED = 1.5
-        MIN_SPEED = 0.3
-        TOLERANCE = 0.003
+        """
+        Proportional controller: turn speed scales with remaining angle.
+        Slows down as it approaches target → no overshoot.
+        """
+        MAX_SPEED = 1.5   # rad/sec max
+        MIN_SPEED = 0.3   # rad/sec min (keeps moving when close)
+        TOLERANCE = 0.003 # ~0.17 degrees — very tight
 
         msg = Twist()
         while True:
@@ -48,6 +65,7 @@ class Traveler(Node):
             diff = self._angle_diff(target_theta, self.pose.theta)
             if abs(diff) < TOLERANCE:
                 break
+            # Proportional gain: faster when far, slower when close
             speed = max(MIN_SPEED, min(MAX_SPEED, abs(diff) * 2.0))
             msg.angular.z = speed if diff > 0 else -speed
             self.publisher_.publish(msg)
@@ -56,6 +74,7 @@ class Traveler(Node):
         time.sleep(0.2)
 
     def move_forward(self, distance):
+        """Move forward by distance using start-pose odometry."""
         start_x = self.pose.x
         start_y = self.pose.y
 
@@ -74,6 +93,16 @@ class Traveler(Node):
         time.sleep(0.2)
 
     def run_path(self):
+        """
+        Draw a rectangle (WIDTH x HEIGHT) then a diagonal.
+        All angles derived from math — no hardcoded coordinates.
+
+        Heading convention (turtlesim):
+          East  =  0          (right)
+          South = -pi/2       (down)
+          West  =  pi or -pi  (left)
+          North =  pi/2       (up)
+        """
         W = self.WIDTH
         H = self.HEIGHT
 
@@ -82,9 +111,11 @@ class Traveler(Node):
         WEST  =  math.pi
         NORTH =  math.pi / 2.0
 
+        # Diagonal: from top-left going down-right = negative angle from East
         DIAG     = -math.atan2(H, W)
         DIAG_LEN =  math.sqrt(W**2 + H**2)
 
+        # --- Rectangle ---
         self.get_logger().info('Top edge →')
         self.turn_to(EAST);  self.move_forward(W)
 
@@ -97,6 +128,7 @@ class Traveler(Node):
         self.get_logger().info('Left edge ↑')
         self.turn_to(NORTH); self.move_forward(H)
 
+        # --- Diagonal ---
         self.get_logger().info('Diagonal ↘')
         self.turn_to(DIAG);  self.move_forward(DIAG_LEN)
 

@@ -1,0 +1,4 @@
+[console_scripts]
+hello = hello_pkg.hello:main
+traveler = hello_pkg.traveler:main
+
