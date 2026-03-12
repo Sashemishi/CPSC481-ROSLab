@@ -28,6 +28,7 @@ Both prgrams were developed on:
 Open Termina1 (Simulator):
 1. navigate to ROS directory
 2. ros2 run turtlesim turtlesim_node
+
 Open Terminal2 (Controller):
 1. navigate to ROS directory
 2. colcon build
